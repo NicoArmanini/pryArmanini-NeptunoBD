@@ -95,6 +95,7 @@
             // cmbTabla
             // 
             this.cmbTabla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTabla.Enabled = false;
             this.cmbTabla.FormattingEnabled = true;
             this.cmbTabla.Location = new System.Drawing.Point(651, 66);
             this.cmbTabla.Name = "cmbTabla";
@@ -115,7 +116,7 @@
             // txtBDNombre
             // 
             this.txtBDNombre.Enabled = false;
-            this.txtBDNombre.Location = new System.Drawing.Point(233, 69);
+            this.txtBDNombre.Location = new System.Drawing.Point(243, 67);
             this.txtBDNombre.Name = "txtBDNombre";
             this.txtBDNombre.Size = new System.Drawing.Size(161, 22);
             this.txtBDNombre.TabIndex = 14;

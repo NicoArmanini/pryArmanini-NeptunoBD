@@ -20,24 +20,24 @@ namespace pryArmanini_NeptunoBD
         {
             dgvTablas.DataSource = null;
             cmbTablas.SelectedIndex = -1;
-            string cadenaConexion = "";
-            using (OpenFileDialog OpenFileDialog = new OpenFileDialog())
+            string Conexion = "";
+            using (OpenFileDialog File = new OpenFileDialog())
             {
-                if (OpenFileDialog.ShowDialog() == DialogResult.OK)
+                if (File.ShowDialog() == DialogResult.OK)
                 {
-                    string archivo = OpenFileDialog.FileName;
+                    string archivo = File.FileName;
                     txtBDNombre.Text = Path.GetFileName(archivo);
 
                     if (Path.GetExtension(archivo) == ".accdb")
                     {
-                        cadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + archivo + ";Persist Security Info=False;";
+                        Conexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + archivo + ";Persist Security Info=False;";
                     }
                     else
                     {
-                        cadenaConexion = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source =" + archivo + ";";
+                        Conexion = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source =" + archivo + ";";
                     }
 
-                    coneBD.ConnectionString = cadenaConexion;
+                    coneBD.ConnectionString = Conexion;
 
                     cmbTablas.Items.Clear();
 
@@ -62,14 +62,14 @@ namespace pryArmanini_NeptunoBD
                     }
                 }
             }
-            return cadenaConexion;
+            return Conexion;
         }
 
-        public void MostrarTablas(ComboBox cmbTablas, string cadenaConexion, DataGridView dgvTablas)
+        public void MostrarTablas(ComboBox cmbTablas, string Conexion, DataGridView dgvTablas)
         {
             if (cmbTablas.SelectedIndex != -1)
             {
-                coneBD.ConnectionString = cadenaConexion;
+                coneBD.ConnectionString = Conexion;
 
                 try
                 {

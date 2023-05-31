@@ -101,7 +101,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
-            this.ClientSize = new System.Drawing.Size(514, 257);
+            this.ClientSize = new System.Drawing.Size(564, 266);
             this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.txtUsuario);

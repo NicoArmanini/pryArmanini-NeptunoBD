@@ -20,14 +20,14 @@ namespace pryArmanini_NeptunoBD
         public string Conexion;
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            clsBaseDatos clsBaseDeDatos = new clsBaseDatos();
-            clsBaseDeDatos.MostrarTablas(cmbTabla, Conexion, dgvTabla);
+            clsBaseDatos BDatos = new clsBaseDatos();
+            BDatos.MostrarTablas(cmbTabla, Conexion, dgvTabla);
         }
 
         private void btnBaseDatos_Click(object sender, EventArgs e)
         {
-            clsBaseDatos clsBaseDeDatos = new clsBaseDatos();
-            Conexion = clsBaseDeDatos.ListarTablas(cmbTabla, dgvTabla, txtBDNombre);
+            clsBaseDatos BDatos = new clsBaseDatos();
+            Conexion = BDatos.ListarTablas(cmbTabla, dgvTabla, txtBDNombre);
             if (Conexion != "")
             {
                 lblBaseDatos.Enabled = true;
