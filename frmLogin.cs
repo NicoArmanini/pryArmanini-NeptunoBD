@@ -21,14 +21,14 @@ namespace pryArmanini_NeptunoBD
         {
             if (txtUsuario.Text == "nico" && txtContraseña.Text == "nico")
             {
-                frmLogin frm = new frmLogin();
+                frmBDTablas BDTablas = new frmBDTablas();
                 this.Hide();
-                frm.ShowDialog();
+                BDTablas.ShowDialog();
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Datos Incorrectos, revise su Usuario/Contrasenia", "Datos Incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Datos Incorrectos, revise su Usuario o Contrasenia", "Datos Incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

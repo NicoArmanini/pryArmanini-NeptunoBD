@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.btnIniciar = new System.Windows.Forms.Button();
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
@@ -38,26 +39,27 @@
             // 
             // btnIniciar
             // 
-            this.btnIniciar.Location = new System.Drawing.Point(235, 247);
+            this.btnIniciar.Location = new System.Drawing.Point(228, 190);
             this.btnIniciar.Margin = new System.Windows.Forms.Padding(4);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(115, 42);
             this.btnIniciar.TabIndex = 11;
-            this.btnIniciar.Text = "Iniciar";
+            this.btnIniciar.Text = "&Iniciar";
             this.btnIniciar.UseVisualStyleBackColor = true;
             this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
             // txtContraseña
             // 
-            this.txtContraseña.Location = new System.Drawing.Point(220, 178);
+            this.txtContraseña.Location = new System.Drawing.Point(210, 134);
             this.txtContraseña.Margin = new System.Windows.Forms.Padding(4);
             this.txtContraseña.Name = "txtContraseña";
+            this.txtContraseña.PasswordChar = '*';
             this.txtContraseña.Size = new System.Drawing.Size(153, 22);
             this.txtContraseña.TabIndex = 10;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(220, 120);
+            this.txtUsuario.Location = new System.Drawing.Point(208, 82);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(155, 22);
@@ -77,34 +79,36 @@
             // lblContraseña
             // 
             this.lblContraseña.AutoSize = true;
-            this.lblContraseña.Location = new System.Drawing.Point(107, 182);
+            this.lblContraseña.Location = new System.Drawing.Point(123, 137);
             this.lblContraseña.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblContraseña.Name = "lblContraseña";
-            this.lblContraseña.Size = new System.Drawing.Size(76, 16);
+            this.lblContraseña.Size = new System.Drawing.Size(79, 16);
             this.lblContraseña.TabIndex = 7;
-            this.lblContraseña.Text = "Contraseña";
+            this.lblContraseña.Text = "Contraseña:";
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(131, 126);
+            this.lblUsuario.Location = new System.Drawing.Point(145, 82);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(54, 16);
+            this.lblUsuario.Size = new System.Drawing.Size(57, 16);
             this.lblUsuario.TabIndex = 6;
-            this.lblUsuario.Text = "Usuario";
+            this.lblUsuario.Text = "Usuario:";
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 308);
+            this.BackColor = System.Drawing.Color.PowderBlue;
+            this.ClientSize = new System.Drawing.Size(514, 257);
             this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.lblContraseña);
             this.Controls.Add(this.lblUsuario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
             this.Text = "Login";
             this.ResumeLayout(false);

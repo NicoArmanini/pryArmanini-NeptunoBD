@@ -16,5 +16,37 @@ namespace pryArmanini_NeptunoBD
         {
             InitializeComponent();
         }
+
+        public string Conexion;
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clsBaseDatos clsBaseDeDatos = new clsBaseDatos();
+            clsBaseDeDatos.MostrarTablas(cmbTabla, Conexion, dgvTabla);
+        }
+
+        private void btnBaseDatos_Click(object sender, EventArgs e)
+        {
+            clsBaseDatos clsBaseDeDatos = new clsBaseDatos();
+            Conexion = clsBaseDeDatos.ListarTablas(cmbTabla, dgvTabla, txtBDNombre);
+            if (Conexion != "")
+            {
+                lblBaseDatos.Enabled = true;
+                lblTabla.Enabled = true;
+                cmbTabla.Enabled = true;
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            frmFiltrar filtrar = new frmFiltrar();
+            this.Hide();
+            filtrar.ShowDialog();
+            this.Close();
+        }
     }
 }
