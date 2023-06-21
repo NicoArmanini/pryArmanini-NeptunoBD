@@ -20,7 +20,7 @@ namespace pryArmanini_NeptunoBD
         private void frmFiltrar_Load(object sender, EventArgs e)
         {
             clsBaseDatos objPaisCiudad = new clsBaseDatos();
-            objPaisCiudad.CargarPaisCiudad(cmbCiudad, cmbPais, "NEPTUNO", "Clientes");
+            objPaisCiudad.CargarPais(cmbCiudad, cmbPais, "NEPTUNO", "Clientes");
         }
 
         private void btnListar_Click(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace pryArmanini_NeptunoBD
         private void cmbCiudad_SelectedIndexChanged(object sender, EventArgs e)
         {
             clsBaseDatos objCiudad= new clsBaseDatos();
-            objCiudad.ListarCiudad(dgvClientes, "NEPTUNO", "Clientes", cmbCiudad, cmbPais);
+            objCiudad.ListarCiudad(dgvClientes, "NEPTUNO", "Clientes", cmbCiudad);
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

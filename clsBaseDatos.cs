@@ -124,11 +124,12 @@ namespace pryArmanini_NeptunoBD
         {
             if (cmbPais.SelectedIndex != -1)
             {
-                coneBD = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + BaseDeDatos + ".accdb;Persist Security Info=False;");
-                dgvClientes.Rows.Clear();
-                cmbCiudad.SelectedIndex = -1;
+                bool encontrado = false;
+                coneBD.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + BaseDeDatos + ".accdb;Persist Security Info=False;";
                 try
                 {
+                    cmbCiudad.SelectedIndex = -1;
+
                     commBD.Connection = coneBD;
                     commBD.CommandText = Tabla;
                     commBD.CommandType = CommandType.TableDirect;
@@ -136,11 +137,24 @@ namespace pryArmanini_NeptunoBD
 
                     lectorBD = commBD.ExecuteReader();
 
+                    cmbCiudad.Items.Clear();
+
                     while (lectorBD.Read())
                     {
                         if (lectorBD[8].ToString() == cmbPais.Text)
                         {
-                            dgvClientes.Rows.Add(lectorBD[0], lectorBD[1], lectorBD[2], lectorBD[3], lectorBD[4], lectorBD[5], lectorBD[6], lectorBD[7], lectorBD[8], lectorBD[9], lectorBD[10]);
+                            for (int i = 0; i < cmbCiudad.Items.Count; i++)
+                            {
+                                if (lectorBD[5].ToString() == cmbCiudad.Items[i].ToString())
+                                {
+                                    encontrado = true;
+                                }
+                            }
+                            if (encontrado == false)
+                            {
+                                cmbCiudad.Items.Add(lectorBD[5].ToString());
+                            }
+                            encontrado = false;
                         }
                     }
                     commBD.Connection.Close();
@@ -152,13 +166,12 @@ namespace pryArmanini_NeptunoBD
             }
         }
 
-        public void ListarCiudad(DataGridView dgvClientes, string BaseDeDatos, string Tabla, ComboBox cmbCiudad, ComboBox cmbPais)
+        public void ListarCiudad(DataGridView dgvClientes, string BaseDeDatos, string Tabla, ComboBox cmbCiudad)
         {
             if (cmbCiudad.SelectedIndex != -1)
             {
-                coneBD = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + BaseDeDatos + ".accdb;Persist Security Info=False;");
+                coneBD.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + BaseDeDatos + ".accdb;Persist Security Info=False;";
                 dgvClientes.Rows.Clear();
-                cmbPais.SelectedIndex = -1;
                 try
                 {
                     commBD.Connection = coneBD;
@@ -184,11 +197,10 @@ namespace pryArmanini_NeptunoBD
             }
         }
 
-        public void CargarPaisCiudad(ComboBox cmbCiudad, ComboBox cmbPais, string BaseDeDatos, string Tabla)
+        public void CargarPais(ComboBox cmbCiudad, ComboBox cmbPais, string BaseDeDatos, string Tabla)
         {
-            coneBD = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + BaseDeDatos + ".accdb;Persist Security Info=False;");
-            bool encontradoCiudad = false;
-            bool encontradoPais = false;
+            coneBD.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + BaseDeDatos + ".accdb;Persist Security Info=False;";
+            bool encontrado = false;
             try
             {
                 commBD.Connection = coneBD;
@@ -200,31 +212,18 @@ namespace pryArmanini_NeptunoBD
 
                 while (lectorBD.Read())
                 {
-                    for (int i = 0; i < cmbCiudad.Items.Count; i++)
-                    {
-                        if (lectorBD[5].ToString() == cmbCiudad.Items[i].ToString())
-                        {
-                            encontradoCiudad = true;
-                        }
-                    }
-                    if (encontradoCiudad == false)
-                    {
-                        cmbCiudad.Items.Add(lectorBD[5]);
-                    }
-                    encontradoCiudad = false;
-
                     for (int i = 0; i < cmbPais.Items.Count; i++)
                     {
                         if (lectorBD[8].ToString() == cmbPais.Items[i].ToString())
                         {
-                            encontradoPais = true;
+                            encontrado = true;
                         }
                     }
-                    if (encontradoPais == false)
+                    if (encontrado == false)
                     {
                         cmbPais.Items.Add(lectorBD[8]);
                     }
-                    encontradoPais = false;
+                    encontrado = false;
                 }
                 commBD.Connection.Close();
             }

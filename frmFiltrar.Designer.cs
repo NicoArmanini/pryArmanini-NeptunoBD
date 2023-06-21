@@ -57,7 +57,7 @@
             // 
             this.cmbPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPais.FormattingEnabled = true;
-            this.cmbPais.Location = new System.Drawing.Point(395, 36);
+            this.cmbPais.Location = new System.Drawing.Point(142, 36);
             this.cmbPais.Margin = new System.Windows.Forms.Padding(4);
             this.cmbPais.Name = "cmbPais";
             this.cmbPais.Size = new System.Drawing.Size(160, 24);
@@ -68,7 +68,7 @@
             // 
             this.cmbCiudad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCiudad.FormattingEnabled = true;
-            this.cmbCiudad.Location = new System.Drawing.Point(159, 36);
+            this.cmbCiudad.Location = new System.Drawing.Point(404, 36);
             this.cmbCiudad.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCiudad.Name = "cmbCiudad";
             this.cmbCiudad.Size = new System.Drawing.Size(160, 24);
@@ -78,7 +78,7 @@
             // lblPais
             // 
             this.lblPais.AutoSize = true;
-            this.lblPais.Location = new System.Drawing.Point(345, 39);
+            this.lblPais.Location = new System.Drawing.Point(92, 39);
             this.lblPais.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPais.Name = "lblPais";
             this.lblPais.Size = new System.Drawing.Size(37, 16);
@@ -88,7 +88,7 @@
             // lblCiudad
             // 
             this.lblCiudad.AutoSize = true;
-            this.lblCiudad.Location = new System.Drawing.Point(94, 39);
+            this.lblCiudad.Location = new System.Drawing.Point(339, 39);
             this.lblCiudad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCiudad.Name = "lblCiudad";
             this.lblCiudad.Size = new System.Drawing.Size(53, 16);
@@ -117,9 +117,9 @@
             // 
             // btnListar
             // 
-            this.btnListar.Location = new System.Drawing.Point(836, 98);
+            this.btnListar.Location = new System.Drawing.Point(721, 89);
             this.btnListar.Name = "btnListar";
-            this.btnListar.Size = new System.Drawing.Size(128, 43);
+            this.btnListar.Size = new System.Drawing.Size(132, 61);
             this.btnListar.TabIndex = 21;
             this.btnListar.Text = "&Listar";
             this.btnListar.UseVisualStyleBackColor = true;
