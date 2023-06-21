@@ -16,5 +16,38 @@ namespace pryArmanini_NeptunoBD
         {
             InitializeComponent();
         }
+
+        private void frmFiltrar_Load(object sender, EventArgs e)
+        {
+            clsBaseDatos objPaisCiudad = new clsBaseDatos();
+            objPaisCiudad.CargarPaisCiudad(cmbCiudad, cmbPais, "NEPTUNO", "Clientes");
+        }
+
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            clsBaseDatos objClientes= new clsBaseDatos();
+            objClientes.ListarClientes(dgvClientes, "NEPTUNO", "Clientes");
+            mrcFiltros.Enabled = true;
+        }
+
+        private void cmbPais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clsBaseDatos objPais = new clsBaseDatos();
+            objPais.ListarPais(dgvClientes, "NEPTUNO", "Clientes", cmbPais, cmbCiudad);
+        }
+
+        private void cmbCiudad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clsBaseDatos objCiudad= new clsBaseDatos();
+            objCiudad.ListarCiudad(dgvClientes, "NEPTUNO", "Clientes", cmbCiudad, cmbPais);
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            frmBDTablas menu = new frmBDTablas();
+            this.Hide();
+            menu.ShowDialog();
+            this.Close();
+        }
     }
 }

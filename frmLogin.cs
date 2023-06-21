@@ -19,7 +19,7 @@ namespace pryArmanini_NeptunoBD
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text == "nico" && txtContraseña.Text == "nico")
+            if (txtUsuario.Text == "admin" && txtContraseña.Text == "admin")
             {
                 frmBDTablas BDTablas = new frmBDTablas();
                 this.Hide();

@@ -93,6 +93,147 @@ namespace pryArmanini_NeptunoBD
                 }
             }
         }
+
+        public void ListarClientes(DataGridView dgvClientes, string BaseDeDatos, string Tabla)
+        {
+            coneBD = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + BaseDeDatos + ".accdb;Persist Security Info=False;");
+            dgvClientes.Rows.Clear();
+            try
+            {
+                commBD.Connection = coneBD;
+                commBD.CommandText = Tabla;
+                commBD.CommandType = CommandType.TableDirect;
+                commBD.Connection.Open();
+
+                lectorBD = commBD.ExecuteReader();
+
+                while (lectorBD.Read())
+                {
+                    dgvClientes.Rows.Add(lectorBD[0], lectorBD[1], lectorBD[2], lectorBD[3], lectorBD[4], lectorBD[5], lectorBD[6], lectorBD[7], lectorBD[8], lectorBD[9], lectorBD[10]);
+                }
+
+                commBD.Connection.Close();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+
+        public void ListarPais(DataGridView dgvClientes, string BaseDeDatos, string Tabla, ComboBox cmbPais, ComboBox cmbCiudad)
+        {
+            if (cmbPais.SelectedIndex != -1)
+            {
+                coneBD = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + BaseDeDatos + ".accdb;Persist Security Info=False;");
+                dgvClientes.Rows.Clear();
+                cmbCiudad.SelectedIndex = -1;
+                try
+                {
+                    commBD.Connection = coneBD;
+                    commBD.CommandText = Tabla;
+                    commBD.CommandType = CommandType.TableDirect;
+                    commBD.Connection.Open();
+
+                    lectorBD = commBD.ExecuteReader();
+
+                    while (lectorBD.Read())
+                    {
+                        if (lectorBD[8].ToString() == cmbPais.Text)
+                        {
+                            dgvClientes.Rows.Add(lectorBD[0], lectorBD[1], lectorBD[2], lectorBD[3], lectorBD[4], lectorBD[5], lectorBD[6], lectorBD[7], lectorBD[8], lectorBD[9], lectorBD[10]);
+                        }
+                    }
+                    commBD.Connection.Close();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message);
+                }
+            }
+        }
+
+        public void ListarCiudad(DataGridView dgvClientes, string BaseDeDatos, string Tabla, ComboBox cmbCiudad, ComboBox cmbPais)
+        {
+            if (cmbCiudad.SelectedIndex != -1)
+            {
+                coneBD = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + BaseDeDatos + ".accdb;Persist Security Info=False;");
+                dgvClientes.Rows.Clear();
+                cmbPais.SelectedIndex = -1;
+                try
+                {
+                    commBD.Connection = coneBD;
+                    commBD.CommandText = Tabla;
+                    commBD.CommandType = CommandType.TableDirect;
+                    commBD.Connection.Open();
+
+                    lectorBD = commBD.ExecuteReader();
+
+                    while (lectorBD.Read())
+                    {
+                        if (lectorBD[5].ToString() == cmbCiudad.Text)
+                        {
+                            dgvClientes.Rows.Add(lectorBD[0], lectorBD[1], lectorBD[2], lectorBD[3], lectorBD[4], lectorBD[5], lectorBD[6], lectorBD[7], lectorBD[8], lectorBD[9], lectorBD[10]);
+                        }
+                    }
+                    commBD.Connection.Close();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message);
+                }
+            }
+        }
+
+        public void CargarPaisCiudad(ComboBox cmbCiudad, ComboBox cmbPais, string BaseDeDatos, string Tabla)
+        {
+            coneBD = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + BaseDeDatos + ".accdb;Persist Security Info=False;");
+            bool encontradoCiudad = false;
+            bool encontradoPais = false;
+            try
+            {
+                commBD.Connection = coneBD;
+                commBD.CommandText = Tabla;
+                commBD.CommandType = CommandType.TableDirect;
+                commBD.Connection.Open();
+
+                lectorBD = commBD.ExecuteReader();
+
+                while (lectorBD.Read())
+                {
+                    for (int i = 0; i < cmbCiudad.Items.Count; i++)
+                    {
+                        if (lectorBD[5].ToString() == cmbCiudad.Items[i].ToString())
+                        {
+                            encontradoCiudad = true;
+                        }
+                    }
+                    if (encontradoCiudad == false)
+                    {
+                        cmbCiudad.Items.Add(lectorBD[5]);
+                    }
+                    encontradoCiudad = false;
+
+                    for (int i = 0; i < cmbPais.Items.Count; i++)
+                    {
+                        if (lectorBD[8].ToString() == cmbPais.Items[i].ToString())
+                        {
+                            encontradoPais = true;
+                        }
+                    }
+                    if (encontradoPais == false)
+                    {
+                        cmbPais.Items.Add(lectorBD[8]);
+                    }
+                    encontradoPais = false;
+                }
+                commBD.Connection.Close();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+
     }
 }
 
